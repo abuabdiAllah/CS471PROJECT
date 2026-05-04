@@ -8,7 +8,7 @@ This program simulates CPU scheduling for 500 processes using two algorithms:
 1. **FIFO** (First-In First-Out) - processes are scheduled in the order they arrive.
 2. **SJF** (Shortest Job First, Non-Preemptive) - among all currently arrived processes, the one with the shortest burst time runs next.
 
-Input is read from a tab-separated text file (`datafile.txt`) with columns `ArrivalTime` and `CPUBurstlength`. The first 500 processes are used. Statistics are printed to the console and saved to a separate output file for each algorithm.
+Input is read from a tab-separated text file (datafile.txt) with columns ArrivalTime and CPUBurstlength. The first 500 processes are used. Statistics are printed to the console and saved to a separate output file for each algorithm.
 
 ---
 
@@ -17,9 +17,9 @@ Input is read from a tab-separated text file (`datafile.txt`) with columns `Arri
 | File : Description |
 cpu_scheduler.cpp : Source code (well documented) 
 cpu_scheduler : Compiled executable (Linux x86-64) 
-datafile.txt : Input data — 500+ processes with ArrivalTime and CPUBurstlength 
-output_fifo.txt : Sample output — FIFO scheduling 
-output_sjf.txt : Sample output — SJF scheduling 
+datafile.txt : Input data - 500+ processes with ArrivalTime and CPUBurstlength 
+output_fifo.txt : Sample output - FIFO scheduling 
+output_sjf.txt : Sample output - SJF scheduling 
 README.md : This file 
 
 ---
@@ -131,7 +131,7 @@ PID   Arrival   Burst   Start     Finish    Wait  Turnaround  Response
 ## Definiton/differance between FIFO and SJF
 
 ### FIFO
-Processes are sorted by arrival time (stable sort — ties preserve input order). The CPU runs each process to completion before moving to the next. If the CPU is idle when a process arrives, time advances to that arrival.
+Processes are sorted by arrival time (stable sort  ties preserve input order). The CPU runs each process to completion before moving to the next. If the CPU is idle when a process arrives, time advances to that arrival.
 
 ### SJF (Non-Preemptive)
 At each scheduling decision point, all processes that have arrived by `current_time` are candidates. The one with the shortest burst time is selected and runs to completion. Ties are broken by earlier arrival time. If no process is ready, time advances to the next arrival.
