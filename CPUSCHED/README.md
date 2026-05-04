@@ -1,29 +1,26 @@
-# CPU Scheduling Simulator — README
-
-## CS471/571 Operating System Concepts — Project, Spring 2026
+## CS471/571 Operating System Concepts - Final Project, Spring 2026
 
 ---
 
 ## Overview
 
 This program simulates CPU scheduling for 500 processes using two algorithms:
-1. **FIFO** (First-In First-Out) — processes are scheduled in the order they arrive.
-2. **SJF** (Shortest Job First, Non-Preemptive) — among all currently arrived processes, the one with the shortest burst time runs next.
+1. **FIFO** (First-In First-Out) - processes are scheduled in the order they arrive.
+2. **SJF** (Shortest Job First, Non-Preemptive) - among all currently arrived processes, the one with the shortest burst time runs next.
 
 Input is read from a tab-separated text file (`datafile.txt`) with columns `ArrivalTime` and `CPUBurstlength`. The first 500 processes are used. Statistics are printed to the console and saved to a separate output file for each algorithm.
 
 ---
 
-## Files
+## Files in this directory
 
-| File | Description |
-|------|-------------|
-| `cpu_scheduler.cpp` | Source code (well documented) |
-| `cpu_scheduler` | Compiled executable (Linux x86-64) |
-| `datafile.txt` | Input data — 500+ processes with ArrivalTime and CPUBurstlength |
-| `output_fifo.txt` | Sample output — FIFO scheduling |
-| `output_sjf.txt` | Sample output — SJF scheduling |
-| `README.md` | This file |
+| File : Description |
+cpu_scheduler.cpp : Source code (well documented) 
+cpu_scheduler : Compiled executable (Linux x86-64) 
+datafile.txt : Input data — 500+ processes with ArrivalTime and CPUBurstlength 
+output_fifo.txt : Sample output — FIFO scheduling 
+output_sjf.txt : Sample output — SJF scheduling 
+README.md : This file 
 
 ---
 
@@ -51,7 +48,7 @@ g++ -O2 -o cpu_scheduler cpu_scheduler.cpp
 
 | Argument | Values |
 |----------|--------|
-| `scheduling_type` | `1` = FIFO, `2` = SJF |
+| `scheduling_type` | 1 = FIFO, 2 = SJF |
 | `input_file` | Path to input data file |
 | `output_file` | Path where output will be saved |
 
@@ -80,7 +77,7 @@ g++ -O2 -o cpu_scheduler cpu_scheduler.cpp && \
 
 ## Input File Format
 
-The input file must have a header line (`ArrivalTime  CPUBurstlength`) followed by one process per line, with values separated by whitespace:
+The input file must have a header line (`ArrivalTime  CPUBurstlength`) followed by one process per line, with values separated by whitespace, for example:
 
 ```
 ArrivalTime	CPUBurstlength
@@ -121,17 +118,17 @@ PID   Arrival   Burst   Start     Finish    Wait  Turnaround  Response
 
 | Metric | Formula |
 |--------|---------|
-| Total elapsed time | `last_finish_time − first_start_time` |
-| Throughput | `total_burst_time / number_of_processes` |
-| CPU utilization | `total_burst_time / total_elapsed_time × 100%` |
-| Waiting time | `start_time − arrival_time` |
-| Turnaround time | `finish_time − arrival_time` |
-| Response time | `start_time − arrival_time` (same as waiting for non-preemptive) |
-| Averages | `total / number_of_processes` |
+| Total elapsed time | last_finish_time − first_start_time |
+| Throughput | total_burst_time / number_of_processes |
+| CPU utilization | total_burst_time / total_elapsed_time × 100% |
+| Waiting time | start_time − arrival_time |
+| Turnaround time | finish_time − arrival_time |
+| Response time | start_time − arrival_time (same as waiting for non-preemptive) |
+| Averages | total / number_of_processes |
 
 ---
 
-## Algorithm Details
+## Definiton/differance between FIFO and SJF
 
 ### FIFO
 Processes are sorted by arrival time (stable sort — ties preserve input order). The CPU runs each process to completion before moving to the next. If the CPU is idle when a process arrives, time advances to that arrival.
