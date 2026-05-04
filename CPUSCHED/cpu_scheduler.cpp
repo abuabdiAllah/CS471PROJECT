@@ -1,11 +1,7 @@
 /*
- * CS471/571 - Operating System Concepts
+ * CS471/571 - Adam Daif
  * Project - CPU Scheduling Simulator
  * Implements: FIFO (First-In First-Out) and SJF (Shortest Job First) without preemption
- *
- * Usage: ./cpu_scheduler <scheduling_type> <input_file> <output_file>
- *   scheduling_type: 1 = FIFO, 2 = SJF
- *   Example: ./cpu_scheduler 1 datafile.txt output_fifo.txt
  */
 
 #include <iostream>
@@ -18,9 +14,7 @@
 #include <string>
 #include <climits>
 
-// -------------------------
 // Process Data Structure
-// -------------------------
 struct Process {
     int pid;           // Process ID (assigned in order of arrival read)
     int arrivalTime;   // Time at which process arrives
@@ -32,9 +26,8 @@ struct Process {
     int responseTime;  // startTime - arrivalTime
 };
 
-// -------------------------
+
 // Read processes from file
-// -------------------------
 std::vector<Process> readProcesses(const std::string& filename, int limit = 500) {
     std::vector<Process> processes;
     std::ifstream file(filename);
@@ -66,9 +59,7 @@ std::vector<Process> readProcesses(const std::string& filename, int limit = 500)
     return processes;
 }
 
-// -------------------------
 // FIFO Scheduling
-// -------------------------
 std::vector<Process> scheduleFIFO(std::vector<Process> processes) {
     // Sort by arrival time (stable to preserve order for same arrival)
     std::stable_sort(processes.begin(), processes.end(),
@@ -94,9 +85,7 @@ std::vector<Process> scheduleFIFO(std::vector<Process> processes) {
     return processes;
 }
 
-// -------------------------
 // SJF (Non-Preemptive) Scheduling
-// -------------------------
 std::vector<Process> scheduleSJF(std::vector<Process> processes) {
     int n = processes.size();
     std::vector<bool> done(n, false);
@@ -148,9 +137,7 @@ std::vector<Process> scheduleSJF(std::vector<Process> processes) {
     return result;
 }
 
-// -------------------------
 // Print and Save Statistics
-// -------------------------
 void printStats(const std::vector<Process>& processes,
                 const std::string& algorithm,
                 const std::string& outputFile) {
@@ -246,9 +233,7 @@ void printStats(const std::vector<Process>& processes,
     std::cout << "\n[Output saved to: " << outputFile << "]\n";
 }
 
-// -------------------------
 // Main
-// -------------------------
 int main(int argc, char* argv[]) {
     if (argc < 4) {
         std::cerr << "Usage: " << argv[0]
