@@ -54,7 +54,7 @@ g++ -O2 -o cpu_scheduler cpu_scheduler.cpp
 
 ---
 
-## Run Commands (copy and paste)
+## Run Commands
 
 **Run FIFO and save output:**
 ```bash

@@ -1,7 +1,5 @@
-# Producer-Consumer Problem — README
-
-## CS471/571 Operating System Concepts — Project, Spring 2026
-
+## CS471/571 Operating System Concepts - Project, Spring 2026
+By: Adam Daif
 ---
 
 ## Overview
@@ -20,23 +18,18 @@ This program implements the classic **Producer-Consumer** synchronization proble
 
 | File | Description |
 |------|-------------|
-| `producer_consumer.cpp` | Source code (well documented, semaphore usage annotated) |
-| `producer_consumer` | Compiled executable (Linux x86-64) |
-| `input_config.txt` | Input file listing all run configurations (p, c, buffer, sleep, output) |
-| `run_all.sh` | Shell script that reads `input_config.txt` and executes all runs |
-| `output_p2_c2_sleep20.txt` | Sample output — p=2, c=2, sleep=20ms |
-| `output_p2_c5_sleep20.txt` | Sample output — p=2, c=5, sleep=20ms |
-| `output_p2_c10_sleep20.txt` | Sample output — p=2, c=10, sleep=20ms |
-| `output_p5_c2_sleep20.txt` | Sample output — p=5, c=2, sleep=20ms |
-| `output_p5_c5_sleep20.txt` | Sample output — p=5, c=5, sleep=20ms |
-| `output_p5_c10_sleep20.txt` | Sample output — p=5, c=10, sleep=20ms |
-| `output_p10_c2_sleep20.txt` | Sample output — p=10, c=2, sleep=20ms |
-| `output_p10_c5_sleep20.txt` | Sample output — p=10, c=5, sleep=20ms |
-| `output_p10_c10_sleep20.txt` | Sample output — p=10, c=10, sleep=20ms |
-| `output_p5_c5_sleep5.txt` | Sleep comparison — sleep=5ms |
-| `output_p5_c5_sleep20.txt` | Sleep comparison — sleep=20ms |
-| `output_p5_c5_sleep40.txt` | Sleep comparison — sleep=40ms |
-| `README.md` | This file |
+| producer_consumer.cpp | Source code (well documented, semaphore usage annotated) |
+| producer_consumer | Compiled executable (Linux x86-64) |
+| input_config.txt | Input file listing all run configurations (p, c, buffer, sleep, output) |
+| run_all.sh | Shell script that reads `input_config.txt` and executes all runs to make it easier
+| output_p2_c2_sleep20.txt | Sample output - p=2, c=2, sleep=20ms |
+| output_p2_c5_sleep20.txt | Sample output - p=2, c=5, sleep=20ms |
+| output_p2_c10_sleep20.txt | Sample output - p=2, c=10, sleep=20ms |
+| output_p5_c2_sleep20.txt | Sample output - p=5, c=2, sleep=20ms |
+| output_p5_c5_sleep20.txt | Sample output - p=5, c=5, sleep=20ms |
+| output_p5_c10_sleep20.txt | Sample output - p=5, c=10, sleep=20ms |
+...etc
+| README.md | This file |
 
 ---
 
@@ -64,15 +57,15 @@ g++ -O2 -pthread -o producer_consumer producer_consumer.cpp
 
 | Argument | Description |
 |----------|-------------|
-| `producers` | Number of producer threads (p) |
-| `consumers` | Number of consumer threads (c) |
-| `buffer_size` | Shared buffer capacity (number of items) |
-| `sleep_ms` | Maximum sleep time per producer between productions (ms) |
-| `output_file` | Path to save results |
+| producers | Number of producer threads (p) |
+| consumers | Number of consumer threads (c) |
+| buffer_size | Shared buffer capacity (number of items) |
+| sleep_ms | Maximum sleep time per producer between productions (ms) |
+| output_file | Path to save results |
 
 ---
 
-## Run Commands (copy and paste)
+## Run Commands
 
 **Single run example (p=2, c=2):**
 ```bash
@@ -121,7 +114,7 @@ The code uses three semaphores to synchronize access to all shared state:
 
 | Semaphore | Type | Initial Value | Purpose |
 |-----------|------|---------------|---------|
-| `g_mutex` | Binary (sem_t) | 1 | Mutual exclusion — protects buffer, counters, `g_done`, and global stats |
+| `g_mutex` | Binary (sem_t) | 1 | Mutual exclusion - protects buffer, counters, `g_done`, and global stats |
 | `g_empty` | Counting (sem_t) | `buffer_size` | Tracks available empty buffer slots; producers wait on this |
 | `g_full` | Counting (sem_t) | 0 | Tracks filled buffer slots; consumers wait on this |
 
