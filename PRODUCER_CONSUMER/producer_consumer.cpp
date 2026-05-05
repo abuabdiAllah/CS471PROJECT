@@ -1,6 +1,5 @@
 /*
- * CS471/571 - Operating System Concepts
- * Project - Producer-Consumer Problem
+ * CS471/571 - Adam Daif
  *
  * Implements the classic Producer-Consumer problem using POSIX semaphores
  * and pthreads. Producers generate random sales records; consumers read them
@@ -8,14 +7,6 @@
  *
  * Usage: ./producer_consumer <producers> <consumers> <buffer_size> <sleep_ms> <output_file>
  *   Example: ./producer_consumer 2 2 10 20 output_p2_c2.txt
- *
- * Synchronization (SHARED resources):
- *   g_mutex  - binary semaphore: mutual exclusion over buffer + counters
- *   g_empty  - counting semaphore: available empty buffer slots
- *   g_full   - counting semaphore: available full buffer slots
- *   g_done   - boolean flag (protected by g_mutex): all 1000 items produced
- *   g_totalProduced, g_totalConsumed, g_buffer[] - all SHARED, protected by g_mutex
- *   g_globalSales, g_globalMonthly[] - SHARED, written by consumer threads at end
  */
 
 #include <iostream>

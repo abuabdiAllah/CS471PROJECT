@@ -2,6 +2,9 @@
  * CS471/571 - Adam Daif
  * Project - CPU Scheduling Simulator
  * Implements: FIFO (First-In First-Out) and SJF (Shortest Job First) without preemption
+ * Usage: ./cpu_scheduler <scheduling_type> <input_file> <output_file>
+ *   scheduling_type: 1 = FIFO, 2 = SJF
+ *   Example: ./cpu_scheduler 1 datafile.txt output_fifo.txt
  */
 
 #include <iostream>
